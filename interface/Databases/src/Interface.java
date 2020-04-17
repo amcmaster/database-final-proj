@@ -11,10 +11,10 @@ public class Interface
     public static void main (String [] args) throws ClassNotFoundException, SQLException
     {
         Scanner scan = new Scanner(System.in);
-
+        
         //variables
         int user_input;
-
+        
         //intro message
         System.out.println("Welcome to Bicycle Management System");
         do
@@ -70,18 +70,18 @@ public class Interface
         Connection con = DriverManager.getConnection("jdbc:postgresql://localhost: 5432/postgres", "postgres", "admin");
         PreparedStatement stmt = con.prepareStatement("SELECT eUsername, ePassword FROM employees");
         ResultSet Rs = stmt.executeQuery();
-
+        
         while (Rs.next())
         {
         	databaseUN = Rs.getString("username");
         	databasePW = Rs.getString("password");
         }
-
+        
         if (databaseUN == username && databasePW == password) 
         {
         	System.out.println("Successfully logged in!");
         	System.out.println("Please enter \"logout\" to exit");
-
+        	
         	command = scan1.nextLine();
         	if(command == "logout")
         	{
