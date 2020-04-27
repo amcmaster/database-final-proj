@@ -2,20 +2,27 @@ import csv
 import datetime
 from random import randint
 
-with open('orders.csv', 'r') as orders:
-    with open('order-list.csv', 'w') as olist:
-        orders_csv = csv.reader(orders)
+with open('place-order.csv', 'r') as place_order:
+    with open('orders.csv', 'w') as orders:
+        orders_csv = csv.reader(place_order)
         for item in orders_csv:
-            shipdate = datetime.datetime.fromisoformat(item[2]) + datetime.timedelta(days=3)
-
-            bid = randint(0, 7044) % 248 + 2
-            writer = csv.writer(olist)
-            qty =  randint(1,4)
-            writer.writerow([bid, item[1], qty, shipdate])
-
-
-
-
+            writer = csv.writer(orders)
+            cardnum = '4'
+            for i in range(1, 16):
+                num = randint(0, 9)
+                cardnum = cardnum + str(num)
+            writer.writerow([item[1], cardnum])
+#with open('orders.csv', 'r') as orders:
+#    with open('order-list.csv', 'w') as olist:
+#        orders_csv = csv.reader(orders)
+#        for item in orders_csv:
+#            shipdate = datetime.datetime.fromisoformat(item[2]) + datetime.timedelta(days=3)
+#
+#            bid = randint(0, 7044) % 248 + 2
+#            writer = csv.writer(olist)
+#            qty =  randint(1,4)
+#            writer.writerow([bid, item[1], qty, shipdate])
+#
 
 #base = datetime.datetime.today()
 #
@@ -31,3 +38,5 @@ with open('orders.csv', 'r') as orders:
 #            writer.writerow([item[0], onum, dates[i]])
 #            onum+=1
 #            i+=1
+
+
