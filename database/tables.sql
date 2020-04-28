@@ -3,7 +3,7 @@ CREATE TABLE bikes(
     BNAME varchar REFERENCES brands(BNAME),
     COLOR varchar,
     PRICE numeric(1000000, 2),
-    INSTOCK int IS NOT NULL,
+    INSTOCK int NOT NULL,
     STYLE varchar,
     PRIMARY KEY(BID)
 );
@@ -14,13 +14,13 @@ CREATE TABLE customers(
     LNAME varchar,
     BOD date,
     PHONE numeric(10),
-    ADDRESS varchar IS NOT NULL,
+    ADDRESS varchar NOT NULL,
     PRIMARY KEY(CID)
 );
 
 CREATE TABLE orders(
     ONUM int,
-    CARDNUM int IS NOT NULL,
+    CARDNUM int NOT NULL,
     PRIMARY KEY(ONUM)
 );
 
@@ -40,7 +40,7 @@ CREATE TABLE placeorder(
 
 CREATE TABLE provide(
     BID int REFERENCES brands(BID),
-    PRICE numeric(1000000,2) IS NOT NULL,
+    PRICE numeric(1000000,2) NOT NULL,
     QTY int,
     PRIMARY KEY(BID)
 );
